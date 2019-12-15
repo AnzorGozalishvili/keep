@@ -1,0 +1,4 @@
+include requirements.txt
+include keep/StopwordsList/*.txt
+include keep/sigtrec_eval/*
+include keep/tests/*
