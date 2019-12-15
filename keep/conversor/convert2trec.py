@@ -60,7 +60,7 @@ class Convert(object):
                     outfile.write("%s Q0 %s %d %d %s\n" % ( docid, instance, (i+1), (len(result)-i), algorithm ) )
 
     def CreateQrelFile(self, output_path, dataset_name):
-        output_file = output_path + f"/{dataset_name}.qrel"
+        output_file = output_path + f"{dataset_name}.qrel"
         print(f"2 - CreateQrelFile: {output_file}")
         with open(output_file, 'w') as outfile:
             for docid in self.qrels:
