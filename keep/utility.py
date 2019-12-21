@@ -27,7 +27,7 @@ ISO_to_language_stemming_SnowballStemmer = {'en': 'english',
                    'sv': 'swedish'}
 
 def getlanguage(pathDataset):
-	with open(os.path.join(pathDataset, 'lan.txt'), encoding='utf8') as fil:
+	with open(pathDataset + '/lan.txt', encoding='utf8') as fil:
 		lan = fil.read()
 	return lan[:2]
 

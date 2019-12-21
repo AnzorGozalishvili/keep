@@ -37,7 +37,7 @@ ListOfAlgorithms = ['RAKE', 'YAKE', 'MultiPartiteRank', 'TopicalPageRank', 'Topi
                     'KPMiner', 'TFIDF', 'KEA']
 '''
 
-ListOfAlgorithms = ['KEA']
+ListOfAlgorithms = ['YAKE']
 
 #Please replace the following path by your own path, where data is the folder where the datasets may be found.
 pathData = 'H:/Backup/Research/Programming/JupyterNotebooks/Python/KeywordExtractors/data'
