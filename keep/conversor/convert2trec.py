@@ -2,7 +2,6 @@ from os import path
 from glob import glob
 from string import punctuation
 import os
-
 from segtok.tokenizer import web_tokenizer, split_contractions
 
 class Convert(object):
@@ -91,7 +90,7 @@ class Convert(object):
         filters = []
         if EvaluationStemming:
             if self.lang == 'polish':
-                import PolishStemmer
+                from keep import PolishStemmer
                 self.stem = PolishStemmer()
                 filters.append(self.__polish_stem__)
             elif self.lang == 'english':
