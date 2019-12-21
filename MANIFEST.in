@@ -1,6 +1,7 @@
 include requirements.txt
 include keep/StopwordsList/*.txt
 include keep/sigtrec_eval/*
+include keep/sigtrec_eval/example/*
 include keep/tests/*
 include keep/stems/*
 include keep/stems/files/*
