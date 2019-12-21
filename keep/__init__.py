@@ -11,3 +11,4 @@ from keep.Algorithms.YAKE.YAKE import YAKE
 from keep.Algorithms.KEA.KEA import KEA
 from keep.sigtrec_eval.sigtrec_eval import SIGTREC_Eval
 from keep.conversor.convert2trec import Convert
+from keep.stems.polishstem import PolishStemmer

@@ -42,7 +42,7 @@ docPath = pathData + f'/Datasets/{dataset_name}/docsutf8/{doc}'
 nFolds = 5 #Num of folds
 
 #ListOfAlgorithms = ['RAKE', 'YAKE', 'MultiPartiteRank', 'TopicalPageRank', 'TopicRank', 'SingleRank', 'TextRank', 'KPMiner', 'TFIDF', 'KEA']
-ListOfAlgorithms = ['YAKE', 'RAKE', 'KEA']
+ListOfAlgorithms = ['KEA']
 
 for algorithm in ListOfAlgorithms:
     print(f"Algorithm being executed = {algorithm}")
