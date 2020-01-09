@@ -86,13 +86,13 @@ Proceed to download here: (https://docs.docker.com/engine/installation/#server)
 #### Pull Image
 Execute the following command on your docker machine: 
 ``` bash
-docker pull liaad/keep
+docker pull liaad/keep:v1
 ```
 
 #### Run Image
 On your docker machine run the following to launch the image: 
 ``` bash
-docker run -p 9999:8888 --user root liaad/keep
+docker run -p 9999:8888 --user root liaad/keep:v1
 ```
 
 Then go to your browser and type in the following url: 
