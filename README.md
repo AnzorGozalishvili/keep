@@ -137,14 +137,14 @@ PKE makes use of Spacy for the pre-processing stage. Currently Spacy supports th
 In order to install these language models you need to open your command line (e.g., anaconda) in administration mode. Otherwise they will be installed, but will return an error later on. <br>
 
 ``` bash
-python -m spacy download en <br>
-python -m spacy download es <br>
-python -m spacy download fr <br>
-python -m spacy download pt <br>
-python -m spacy download de <br>
-python -m spacy download it <br>
-python -m spacy download nl <br>
-python -m spacy download el <br>
+python -m spacy download en
+python -m spacy download es
+python -m spacy download fr
+python -m spacy download pt
+python -m spacy download de
+python -m spacy download it
+python -m spacy download nl
+python -m spacy download el
 ```
 
 If you want to make sure that everything was properly installed go to site-packages\spacy\data and check if a shortcut for every language is found there.
@@ -218,6 +218,7 @@ Create a folder named 'data' (wherever you want to) with the following structure
 #### RUN
 ##### Run Jupyter notebooks
 We suggest you to proceed by running the 6 notebooks that we have prepared for you <a href="http://www.ccc.ipt.pt/~ricardo/keep/standalone/index.html" target="_blank">here</a>. Note that the first three are there only for informative purposes.
+<br>
 
 ##### Run Code
 Alternatively you can resort to the files we provide under the keep/tests folder of the keep package.
