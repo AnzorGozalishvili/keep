@@ -80,18 +80,29 @@ If your system does not meet the requirements to run Docker for Mac, you can ins
 <br><br>
 
 ##### Linux
-<br>
 Proceed to download here: (https://docs.docker.com/engine/installation/#server)
+<br><br>
 
 #### Pull the image
-Execute the following command on your docker machine: docker pull liaad/keep
+Execute the following command on your docker machine: 
+``` bash
+docker pull liaad/keep
+```
 
 #### Run the image
-On your docker machine run the following to launch the image: docker run -p 9999:8888 --user root liaad/keep
+On your docker machine run the following to launch the image: 
+``` bash
+docker run -p 9999:8888 --user root liaad/keep
+```
 
-Then go to your browser and type in the following url: http://<DOCKER-MACHINE-IP>:9999, where the IP may be the localhost or 192.168.99.100 if you are using a Docker Machine VM.
+Then go to your browser and type in the following url: 
+``` bash
+http://<DOCKER-MACHINE-IP>:9999
+```
+
+where the IP may be the localhost or 192.168.99.100 if you are using a Docker Machine VM.
   
-You will be required a token which you can find on your docker machine prompt. It will be something similar to this: http://eac214218126:8888/?token=ce459c2f581a5f56b90256aaa52a96e7e4b1705113a657e8. Copy paste the token (in this example, that would be: ce459c2f581a5f56b90256aaa52a96e7e4b1705113a657e8) to the browser, and voilá, you will have KEEP ready to run.
+You will be required a token which you can find on your docker machine prompt. It will be something similar to this: http://eac214218126:8888/?token=ce459c2f581a5f56b90256aaa52a96e7e4b1705113a657e8. Copy paste the token (in this example, that would be: ce459c2f581a5f56b90256aaa52a96e7e4b1705113a657e8) to the browser, and voilá, you will have KEEP package ready to run.
 
 #### Run the jupyter notebooks
 Once you logged in, proceed by running the 6 notebooks that we have prepared for you. Note that the first three are there only for informative purposes.
