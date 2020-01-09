@@ -108,7 +108,10 @@ You will be required a token which you can find on your docker machine prompt. I
 Once you logged in, proceed by running the 6 notebooks that we have prepared for you. Note that the first three are there only for informative purposes.
 
 #### Logout
-Once you are done go to File - Logout. Next do CTRL-C on your docker machine. If later on you decide to play with the same container, you should proceed as follows. The first thing to do is to get the container id:
+Once you are done go to File - Logout. Next do CTRL-C on your docker machine. 
+
+#### Login again
+If later on you decide to play with the same container, you should proceed as follows. The first thing to do is to get the container id:
 ``` bash
 docker ps -a
 ```
