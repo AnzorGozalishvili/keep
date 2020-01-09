@@ -1,10 +1,12 @@
-# KEEP - Keyphrase Extractor Evaluation Package
+# KEEP - Keyphrase Extraction Evaluation Package
 
-KEEP is a Python package that enables to extract keywords from documents (single document or batch mode) by applying a number of algorithms, the big majority of which provided by [pke](http://www.aclweb.org/anthology/C16-2015) an [open-source package](https://github.com/boudinfl/pke). Differently from PKE, we provide code to extract keywords not only from a single document, but also in batch mode (i.e., several documents). More to the point, we consider 20 state-of-the-art datasets from which keywords may be extracted, and the corresponding  pre-computed models (which constrasts with pke as only semeval-2010 models are made available). Finally, and more importantly, we provide a schema to evaluate the results obtained through state-of-the-art metrics, thus easing the work of researchers interested in evaluating the algorithms provided (see a complete list below). In addition to the possibility of extracting keywords directly from the code, we also provide a jupyter notebook where a step-by-step guide is given to the user.
+KEEP is a Python package that enables to extract keyphrases from documents (single or multiple documents) by applying a number of algorithms, the big majority of which provided by [pke](http://www.aclweb.org/anthology/C16-2015) an [open-source package](https://github.com/boudinfl/pke). Differently from PKE, we provide a ready to run code to extract keyphrases not only from a single document, but also in batch mode (i.e., several documents). More to the point, we consider 20 state-of-the-art datasets from which keyphrases may be extracted, and the corresponding  dfs and lda pre-computed models (which constrasts with pke as only semeval-2010 models are made available). Finally, and more importantly, we provide a schema to evaluate the results obtained through state-of-the-art metrics, thus easing the work of researchers interested in evaluating the algorithms provided (see a complete list below). 
+
+KEEP is available on Dockerhub (ready to run) or available for download (in which case, some configurations need to be done). In any case, we provide a set of jupyter notebooks to ease the process of extracting keyphrases and evaluating the different algorithms. More on this on the Installation section.
 
 ## List of Datasets
 
-KeywordExtractor packages can extract keywords from 20 <a href="https://github.com/LIAAD/KeywordExtractor-Datasets" target="_blank">datasets</a>:
+KEEP can extract keyphrases from 20 <a href="https://github.com/LIAAD/KeywordExtractor-Datasets" target="_blank">datasets</a>:
 
 - 110-PT-BN-KP (110 docs; PT)
 - 500N-KPCrowd-v1.1 (500 docs; EN)
@@ -35,7 +37,7 @@ Note however that more datasets can be added as long as they follow the coming s
 - lan.txt: a file that specifies the language of the document (e.g., EN). Used to load the stopwords
 - language.txt: a file that specifies the language of the document (e.g., english). Used in convert2trec.py in case the user wants to do stemming when comparing the results obtained and the ground-truth. Currently the system considers the following languages: english, spanish, french, polish, portuguese (which are the languages of the datasets being used). If more datasets are added, user's should guarantee that a proper stemming is available in case they want to apply this option in the evaluation step.
 
-## Keyword Extractor Algorithms
+## Keyphrase Extraction Algorithms
 
 
 ### Unsupervised Algorithms
@@ -58,7 +60,44 @@ Note however that more datasets can be added as long as they follow the coming s
 ### Supervised Algorithms
 - KEA (Ref:	Witten I, Paynter G, Frank E, Gutwin C, Nevill-Manning C, (1999). [KEA: Practical Automatic Keyphrase Extraction](https://www.cs.waikato.ac.nz/ml/publications/2005/chap_Witten-et-al_Windows.pdf)). By PKE
 
+## Installing KEEP
+### Option 1: Docker
 
+#### Install Docker
+First, install docker. 
+
+- Windows
+<br>
+Docker for Windows requires 64bit Windows 10 Pro with Hyper-V available. 
+If you have this, then proceed to download [here](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows) and click on Get Docker for Windows (Stable)
+<br><br>
+If your system does not meet the requirements to run Docker for Windows (e.g., 64bit Windows 10 Home), you can install Docker Toolbox, which uses Oracle Virtual Box instead of Hyper-V. In that case proceed to download [here](https://docs.docker.com/toolbox/overview/#ready-to-get-started) and click on Get Docker Toolbox for Windows
+<br><br>
+- Mac
+<br>
+Docker for Mac will launch only if all of these requirements are [met](https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install).
+If you have this, then proceed to download [here](https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac) and click on Get Docker for Mac (Stable)
+<br><br>
+If your system does not meet the requirements to run Docker for Mac, you can install Docker Toolbox, which uses Oracle Virtual Box instead of Hyper-V. In that case proceed to download [here](https://docs.docker.com/toolbox/overview/#ready-to-get-started) and click on Get Docker Toolbox for Mac
+<br><br>
+- Linux
+<br>
+Proceed to download [here](https://docs.docker.com/engine/installation/#server)
+
+#### Pull the image
+Execute the following command on your docker machine: docker pull liaad/keep
+
+#### Run the image
+On your docker machine run the following to launch the image: docker run -p 9999:8888 --user root liaad/keep
+
+Then go to your browser and type in the following url: http://<DOCKER-MACHINE-IP>:9999, where the IP may be the localhost or 192.168.99.100 if you are using a Docker Machine VM.
+  
+You will be required a token which you can find on your docker machine prompt. It will be something similar to this: http://eac214218126:8888/?token=ce459c2f581a5f56b90256aaa52a96e7e4b1705113a657e8. Copy paste the token (in this example, that would be: ce459c2f581a5f56b90256aaa52a96e7e4b1705113a657e8) to the browser, and voilá, you will have KEEP ready to run.
+
+#### Run the jupyter notebooks
+Once you logged in, proceed by running the 6 notebooks that we have prepared for you. Note that the first three are there only for informative purposes.
+
+### Option 2: Standalone Installation
 ## Install KEEP library and Dependency Packages
 
 pip install git+https://github.com/rncampos/keep
