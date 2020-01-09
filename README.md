@@ -86,7 +86,7 @@ Proceed to download here: (https://docs.docker.com/engine/installation/#server)
 #### Pull Image
 Execute the following command on your docker machine: 
 ``` bash
-docker pull liaad/keep
+docker pull liaad/keep:v1
 ```
 
 #### Run Image
