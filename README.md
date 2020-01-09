@@ -83,13 +83,13 @@ If your system does not meet the requirements to run Docker for Mac, you can ins
 Proceed to download here: (https://docs.docker.com/engine/installation/#server)
 <br><br>
 
-#### Pull the image
+#### Pull Image
 Execute the following command on your docker machine: 
 ``` bash
 docker pull liaad/keep
 ```
 
-#### Run the image
+#### Run Image
 On your docker machine run the following to launch the image: 
 ``` bash
 docker run -p 9999:8888 --user root liaad/keep
@@ -102,11 +102,32 @@ http://<DOCKER-MACHINE-IP>:9999
 
 where the IP may be the localhost or 192.168.99.100 if you are using a Docker Machine VM.
   
-You will be required a token which you can find on your docker machine prompt. It will be something similar to this: http://eac214218126:8888/?token=ce459c2f581a5f56b90256aaa52a96e7e4b1705113a657e8. Copy paste the token (in this example, that would be: ce459c2f581a5f56b90256aaa52a96e7e4b1705113a657e8) to the browser, and voilá, you will have KEEP package ready to run.
+You will be required a token which you can find on your docker machine prompt. It will be something similar to this: http://eac214218126:8888/?token=ce459c2f581a5f56b90256aaa52a96e7e4b1705113a657e8. Copy paste the token (in this example, that would be: ce459c2f581a5f56b90256aaa52a96e7e4b1705113a657e8) to the browser, and voilá, you will have KEEP package ready to run. Keep this token (for future references) or define a password.
 
 #### Run Jupyter notebooks
 Once you logged in, proceed by running the 6 notebooks that we have prepared for you. Note that the first three are there only for informative purposes.
 
+#### Logout
+Once you are done go to File - Logout. Next do CTRL-C on your docker machine. If later on you decide to play with the same container, you should proceed as follows. The first thing to do is to get the container id:
+``` bash
+docker ps -a
+```
+
+Next run the following commands:
+``` bash
+docker start ContainerId
+docker attach ContainerId (attach to a running container)
+```
+
+Nothing happens in your docker machine, but you are now ready open your browser as you did before:
+``` bash
+http://<DOCKER-MACHINE-IP>:9999
+```
+
+Hopefully, you have saved the token or defined a password. If that is not the case, then you should run the following command (before doing start/attach) to have access to your token:
+``` bash
+docker exec -it <docker_container_name> jupyter notebook list
+```
 <hr>
 
 ### Option 2: Standalone Installation
