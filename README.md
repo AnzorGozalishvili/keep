@@ -64,25 +64,24 @@ Note however that more datasets can be added as long as they follow the coming s
 ### Option 1: Docker
 
 #### Install Docker
-First, install docker. 
 
-- Windows
-<br>
+##### Windows
 Docker for Windows requires 64bit Windows 10 Pro with Hyper-V available. 
-If you have this, then proceed to download [here](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows) and click on Get Docker for Windows (Stable)
+If you have this, then proceed to download here: (https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows) and click on Get Docker for Windows (Stable)
 <br><br>
-If your system does not meet the requirements to run Docker for Windows (e.g., 64bit Windows 10 Home), you can install Docker Toolbox, which uses Oracle Virtual Box instead of Hyper-V. In that case proceed to download [here](https://docs.docker.com/toolbox/overview/#ready-to-get-started) and click on Get Docker Toolbox for Windows
+If your system does not meet the requirements to run Docker for Windows (e.g., 64bit Windows 10 Home), you can install Docker Toolbox, which uses Oracle Virtual Box instead of Hyper-V. In that case proceed to download here: (https://docs.docker.com/toolbox/overview/#ready-to-get-started) and click on Get Docker Toolbox for Windows
 <br><br>
-- Mac
+
+##### MAC
+Docker for Mac will launch only if all of these requirements (https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install) are met.
+If you have this, then proceed to download here: (https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac) and click on Get Docker for Mac (Stable)
+<br><br>
+If your system does not meet the requirements to run Docker for Mac, you can install Docker Toolbox, which uses Oracle Virtual Box instead of Hyper-V. In that case proceed to download here: (https://docs.docker.com/toolbox/overview/#ready-to-get-started) and click on Get Docker Toolbox for Mac
+<br><br>
+
+##### Linux
 <br>
-Docker for Mac will launch only if all of these requirements are [met](https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install).
-If you have this, then proceed to download [here](https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac) and click on Get Docker for Mac (Stable)
-<br><br>
-If your system does not meet the requirements to run Docker for Mac, you can install Docker Toolbox, which uses Oracle Virtual Box instead of Hyper-V. In that case proceed to download [here](https://docs.docker.com/toolbox/overview/#ready-to-get-started) and click on Get Docker Toolbox for Mac
-<br><br>
-- Linux
-<br>
-Proceed to download [here](https://docs.docker.com/engine/installation/#server)
+Proceed to download here: (https://docs.docker.com/engine/installation/#server)
 
 #### Pull the image
 Execute the following command on your docker machine: docker pull liaad/keep
