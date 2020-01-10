@@ -1,10 +1,12 @@
-# KEEP - Keyphrase Extractor Evaluation Package
+# KEEP - Keyphrase Extraction Evaluation Package
 
-KEEP is a Python package that enables to extract keywords from documents (single document or batch mode) by applying a number of algorithms, the big majority of which provided by [pke](http://www.aclweb.org/anthology/C16-2015) an [open-source package](https://github.com/boudinfl/pke). Differently from PKE, we provide code to extract keywords not only from a single document, but also in batch mode (i.e., several documents). More to the point, we consider 20 state-of-the-art datasets from which keywords may be extracted, and the corresponding  pre-computed models (which constrasts with pke as only semeval-2010 models are made available). Finally, and more importantly, we provide a schema to evaluate the results obtained through state-of-the-art metrics, thus easing the work of researchers interested in evaluating the algorithms provided (see a complete list below). In addition to the possibility of extracting keywords directly from the code, we also provide a jupyter notebook where a step-by-step guide is given to the user.
+KEEP is a Python package that enables to extract keyphrases from documents (single or multiple documents) by applying a number of algorithms, the big majority of which provided by [pke](http://www.aclweb.org/anthology/C16-2015) an [open-source package](https://github.com/boudinfl/pke). Differently from PKE, we provide a ready to run code to extract keyphrases not only from a single document, but also in batch mode (i.e., several documents). More to the point, we consider 20 state-of-the-art datasets from which keyphrases may be extracted, and the corresponding  dfs and lda pre-computed models (which constrasts with pke as only semeval-2010 models are made available). Finally, and more importantly, we provide a schema to evaluate the results obtained through state-of-the-art metrics, thus easing the work of researchers interested in evaluating the algorithms provided (see a complete list below). 
+
+KEEP is available on Dockerhub (ready to run) or available for download (in which case, some configurations need to be done). In any case, we provide a set of jupyter notebooks to ease the process of extracting keyphrases and evaluating the different algorithms. More on this on the Installation section.
 
 ## List of Datasets
 
-KeywordExtractor packages can extract keywords from 20 <a href="https://github.com/LIAAD/KeywordExtractor-Datasets" target="_blank">datasets</a>:
+KEEP can extract keyphrases from 20 <a href="https://github.com/LIAAD/KeywordExtractor-Datasets" target="_blank">datasets</a>:
 
 - 110-PT-BN-KP (110 docs; PT)
 - 500N-KPCrowd-v1.1 (500 docs; EN)
@@ -35,7 +37,7 @@ Note however that more datasets can be added as long as they follow the coming s
 - lan.txt: a file that specifies the language of the document (e.g., EN). Used to load the stopwords
 - language.txt: a file that specifies the language of the document (e.g., english). Used in convert2trec.py in case the user wants to do stemming when comparing the results obtained and the ground-truth. Currently the system considers the following languages: english, spanish, french, polish, portuguese (which are the languages of the datasets being used). If more datasets are added, user's should guarantee that a proper stemming is available in case they want to apply this option in the evaluation step.
 
-## Keyword Extractor Algorithms
+## Keyphrase Extraction Algorithms
 
 
 ### Unsupervised Algorithms
@@ -58,20 +60,92 @@ Note however that more datasets can be added as long as they follow the coming s
 ### Supervised Algorithms
 - KEA (Ref:	Witten I, Paynter G, Frank E, Gutwin C, Nevill-Manning C, (1999). [KEA: Practical Automatic Keyphrase Extraction](https://www.cs.waikato.ac.nz/ml/publications/2005/chap_Witten-et-al_Windows.pdf)). By PKE
 
+## Installing KEEP
+### Option 1: Docker
 
-## Install KEEP library and Dependency Packages
+#### Install Docker
 
-pip install git+https://github.com/rncampos/keep
-<br>
+##### Windows
+Docker for Windows requires 64bit Windows 10 Pro with Hyper-V available. 
+If you have this, then proceed to download here: (https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows) and click on Get Docker for Windows (Stable)
+<br><br>
+If your system does not meet the requirements to run Docker for Windows (e.g., 64bit Windows 10 Home), you can install Docker Toolbox, which uses Oracle Virtual Box instead of Hyper-V. In that case proceed to download here: (https://docs.docker.com/toolbox/overview/#ready-to-get-started) and click on Get Docker Toolbox for Windows
+<br><br>
 
-Dependencies:<br>
-pip install git+https://github.com/rncampos/pke.git
-<br>
+##### MAC
+Docker for Mac will launch only if all of these requirements (https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install) are met.
+If you have this, then proceed to download here: (https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac) and click on Get Docker for Mac (Stable)
+<br><br>
+If your system does not meet the requirements to run Docker for Mac, you can install Docker Toolbox, which uses Oracle Virtual Box instead of Hyper-V. In that case proceed to download here: (https://docs.docker.com/toolbox/overview/#ready-to-get-started) and click on Get Docker Toolbox for Mac
+<br><br>
+
+##### Linux
+Proceed to download here: (https://docs.docker.com/engine/installation/#server)
+<br><br>
+
+#### Pull Image
+Execute the following command on your docker machine: 
+``` bash
+docker pull liaad/keep
+```
+
+#### Run Image
+On your docker machine run the following to launch the image: 
+``` bash
+docker run -p 9999:8888 --user root liaad/keep
+```
+
+Then go to your browser and type in the following url: 
+``` bash
+http://<DOCKER-MACHINE-IP>:9999
+```
+
+where the IP may be the localhost or 192.168.99.100 if you are using a Docker Machine VM.
+  
+You will be required a token which you can find on your docker machine prompt. It will be something similar to this: http://eac214218126:8888/?token=ce459c2f581a5f56b90256aaa52a96e7e4b1705113a657e8. Copy paste the token (in this example, that would be: ce459c2f581a5f56b90256aaa52a96e7e4b1705113a657e8) to the browser, and voil�, you will have KEEP package ready to run. Keep this token (for future references) or define a password.
+
+#### Run Jupyter notebooks
+Once you logged in, proceed by running the 6 notebooks that we have prepared for you. Note that the first three are there only for informative purposes.
+
+#### Shutdown
+Once you are done go to File - Shutdown.
+
+#### Login again
+If later on you decide to play with the same container, you should proceed as follows. The first thing to do is to get the container id:
+``` bash
+docker ps -a
+```
+
+Next run the following commands:
+``` bash
+docker start ContainerId
+docker attach ContainerId (attach to a running container)
+```
+
+Nothing happens in your docker machine, but you are now ready open your browser as you did before:
+``` bash
+http://<DOCKER-MACHINE-IP>:9999
+```
+
+Hopefully, you have saved the token or defined a password. If that is not the case, then you should run the following command (before doing start/attach) to have access to your token:
+``` bash
+docker exec -it <docker_container_name> jupyter notebook list
+```
+<hr>
+
+### Option 2: Standalone Installation
+#### Install KEEP library and Dependency Packages
+
+``` bash
+pip install git+https://github.com/liaad/keep
+pip install git+https://github.com/boudinfl/pke
 pip install git+https://github.com/LIAAD/yake.git
+```
+<br>
 
-## Install External Resources
+#### Install External Resources
 
-### Spacy Language Models
+##### Spacy Language Models
 
 PKE makes use of Spacy for the pre-processing stage. Currently Spacy supports the following languages: 
 
@@ -86,14 +160,16 @@ PKE makes use of Spacy for the pre-processing stage. Currently Spacy supports th
 
 In order to install these language models you need to open your command line (e.g., anaconda) in administration mode. Otherwise they will be installed, but will return an error later on. <br>
 
-python -m spacy download en <br>
-python -m spacy download es <br>
-python -m spacy download fr <br>
-python -m spacy download pt <br>
-python -m spacy download de <br>
-python -m spacy download it <br>
-python -m spacy download nl <br>
-python -m spacy download el <br>
+``` bash
+python -m spacy download en
+python -m spacy download es
+python -m spacy download fr
+python -m spacy download pt
+python -m spacy download de
+python -m spacy download it
+python -m spacy download nl
+python -m spacy download el
+```
 
 If you want to make sure that everything was properly installed go to site-packages\spacy\data and check if a shortcut for every language is found there.
 
@@ -117,11 +193,11 @@ PKE also gives the possibility of applying stemming in the pre-processing stage 
 - 'ru': 'russian',
 - 'sv': 'swedish'
 
-Stemming will not be applied (even if defined as a parameter9) for languages different then the above referred.
+Stemming will not be applied (even if defined as a parameter) for languages different then the above referred.
 
-### NLTK Stopwords
+##### NLTK Stopwords
 
-In terms of stopwords, PKE considers the NLTK stopwords of the following languages:
+In terms of stopwords, PKE considers the NLTK stopwords for the following languages:
 
 - 'ar': 'arabic',
 - 'az': 'azerbaijani',
@@ -147,29 +223,29 @@ In terms of stopwords, PKE considers the NLTK stopwords of the following languag
 
 In order to download these stopwords please procede as follows:
 
+``` bash
 python -m nltk.downloader stopwords
+```
 
-In addition to this, we make use of an extended list of stopwords which can be found within the KeywordExtractors package. These are naturally instaled upon installing the package.
+In addition to this, we make use of an extended list of stopwords which can be found within the KEEP package. These are naturally instaled upon installing the package.
 
 
-## Create folder Data and Download Keyword Extractor Models
+#### Create folder Data and Download dfs and lda Models
 
 Create a folder named 'data' (wherever you want to) with the following structure: 
 
 * conversor: folder where the output (i.e., the .qrel and .out files) will be saved. You can create this folder manually, or simply wait for the system to automatically create it.
 * Datasets: folder where the datasets should go in. You may already find 20 datasets ready to download <a href="https://github.com/LIAAD/KeywordExtractor-Datasets" target="_blank">here</a>. Each dataset should be unzipped to this folder. For instance if you want to play with the Inspec dataset you should end up with the following structure: Datasets\Inspec
-* Keywords: folder where the keywords are to be written by the system. For instance, if later on you decide to run YAKE! keyword extractor algorithm on top of the Inspec collection, you will end up with the following structure: Keywords\YAKE\Inspec. In any case, it is not mandatory to manually create 'Keywords' folder as this will be automatically created, shouldn't exists.
-* Models: Some algorithms (such as TopicRank, KEA, TF.IDF, KPMiner, etc) require a number of models in order to run (e.g., document frequency models, LDA, etc). The models needed to run the algorithms on top of each of the 20 datasets, are divided into a supervised and an unsupervised folder and are already available <a href="https://github.com/rncampos/KeywordExtractors-Models" target="_blank">here</a> for download (and should be put inside the 'Models' folder). In case you decide not to download them, the system will automatically create the 'Models' folder and the corresponding models will be put inside. Note however, that this will take you much time, thus downloading them in advance is a better option.
+* Keywords: folder where the keyphrases are to be written by the system. For instance, if later on you decide to run YAKE! keyword extraction algorithm on top of the Inspec collection, you will end up with the following structure: Keywords\YAKE\Inspec. In any case, it is not mandatory to manually create 'Keywords' folder as this will be automatically created by the system in case it doesn't exists.
+* Models: Some unsupervised algorithms (such as TopicRank, TF.IDF, KPMiner, etc) require a number of models in order to run (e.g., document frequency models, LDA). To speed up the process we make them available <a href="http://www.ccc.ipt.pt/~ricardo/keep/standalone/data.zip" target="_blank">here</a> for download (and should be put inside the 'Models' folder). In case you decide not to download them, the system will automatically create the 'Models' folder and the corresponding models will be put inside. Note however, that this will take you much time, thus downloading them in advance is a better option. Also note that we do not provide any models for the KEA supervised algorithm as these are not always the same (dfs, lda and the kea model itself depend on the cross-validation fold).
 
-## Extract Keywords from a Single Doc
+#### RUN
+##### Run Jupyter notebooks
+We suggest you to proceed by running the 6 notebooks that we have prepared for you <a href="http://www.ccc.ipt.pt/~ricardo/keep/standalone/index.html" target="_blank">here</a>. Note that the first three are there only for informative purposes.
+<br>
 
-Inside the KeywordExtractors folder you may find a testing file (named 'test_SingleDoc.py') to extract keywords from a single document for all the algorithms herein considered. By default the system is extracting keywords from a french document, but you may also find there examples (which are commented) to extract keywords from an english, portuguese, spanish or a polish document. Note: in order to run the code, please replace the 'pathData' by the path where you have put the data folder.
-
-
-## Extract Keywords from several Docs (batch mode)
-
-Inside the KeywordExtractors folder you may find a testing file (named 'test_Batch.py') to extract keywords from several documents for all the algorithms herein considered. By default, the system is extracting keywords from all the collections for all the algorithms (this may take days in order to conclude). Note: in order to run the code, please replace the 'pathData' by the path where you have put the data folder.
-
-## Jupyter Notebook
-
-Instead of resorting to the previous file, you can also extract keywords (single or batch mode) by using the 'run.ipynb' jupyter notebook that you can find in our package. Therein you can find instructions on how to extract keywords from the notebook, but also from the command line. In addition, we also provide instructions on how to evaluate the results of each of the algorithms.
+##### Run Code
+Alternatively you can resort to the files we provide under the keep/tests folder of the keep package.
+- ExtractKeyphrases_From_SingleDoc.py: enables to extract keyphrases from a single doc.
+- ExtractKeyphrases_From_MultipleDocs.py: enables to extract keyphrases from multiple docs.
+- Running_Evaluation.py: enables to run the evaluation.
