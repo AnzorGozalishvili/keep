@@ -227,7 +227,7 @@ In order to download these stopwords please procede as follows:
 python -m nltk.downloader stopwords
 ```
 
-In addition to this, we make use of an extended list of stopwords which can be found within the KEEP package. These are naturally instaled upon installing the package.
+In addition to this, we make use of an extended list of stopwords downloaded from [here](https://www.ranks.nl/stopwords) which can be found within the KEEP package. These are naturally instaled upon installing the package.
 
 
 #### Create folder Data and Download dfs and lda Models
@@ -237,7 +237,7 @@ Create a folder named 'data' (wherever you want to) with the following structure
 * conversor: folder where the output (i.e., the .qrel and .out files) will be saved. You can create this folder manually, or simply wait for the system to automatically create it.
 * Datasets: folder where the datasets should go in. You may already find 20 datasets ready to download <a href="https://github.com/LIAAD/KeywordExtractor-Datasets" target="_blank">here</a>. Each dataset should be unzipped to this folder. For instance if you want to play with the Inspec dataset you should end up with the following structure: Datasets\Inspec
 * Keywords: folder where the keyphrases are to be written by the system. For instance, if later on you decide to run YAKE! keyword extraction algorithm on top of the Inspec collection, you will end up with the following structure: Keywords\YAKE\Inspec. In any case, it is not mandatory to manually create 'Keywords' folder as this will be automatically created by the system in case it doesn't exists.
-* Models: Some unsupervised algorithms (such as TopicRank, TF.IDF, KPMiner, etc) require a number of models in order to run (e.g., document frequency models, LDA). To speed up the process we make them available <a href="http://www.ccc.ipt.pt/~ricardo/keep/standalone/data.zip" target="_blank">here</a> for download (and should be put inside the 'Models' folder). In case you decide not to download them, the system will automatically create the 'Models' folder and the corresponding models will be put inside. Note however, that this will take you much time, thus downloading them in advance is a better option. Also note that we do not provide any models for the KEA supervised algorithm as these are not always the same (dfs, lda and the kea model itself depend on the cross-validation fold).
+* Models: Some unsupervised algorithms (such as TopicalPageRank, TF.IDF, KPMiner, etc) require a number of models in order to run (e.g., document frequency models, LDA). To speed up the process we make them available <a href="http://www.ccc.ipt.pt/~ricardo/keep/standalone/data.zip" target="_blank">here</a> for download (and should be put inside the 'Models' folder). In case you decide not to download them, the system will automatically create the 'Models' folder and the corresponding models will be put inside. Note however, that this will take you much time, thus downloading them in advance is a better option. Also note that we do not provide any models for the KEA supervised algorithm as these are not always the same (dfs, lda and the kea model itself depend on the cross-validation fold).
 
 #### RUN
 ##### Run Jupyter notebooks
