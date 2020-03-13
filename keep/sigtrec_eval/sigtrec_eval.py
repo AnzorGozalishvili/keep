@@ -146,7 +146,7 @@ class SIGTREC_Eval():
 							test_result+=('bl ')
 					instance.append('%f %s' % (round(mean_measure_folds,self.round), test_result) )
 				raw.append(instance)
-			printable[qrel] = pd.DataFrame(raw, columns=['app', *(table.columns.levels[1].get_values())[:-1]])
+			printable[qrel] = pd.DataFrame(raw, columns=['app', *(table.columns.levels[1].values)[:-1]])
 		return printable
 
 	def getListOfMeasures(self, measures):
